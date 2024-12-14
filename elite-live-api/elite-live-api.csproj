@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\template\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\elite-live-repository\elite-live-repository.csproj" />
   </ItemGroup>
 
