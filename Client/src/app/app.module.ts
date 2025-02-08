@@ -27,6 +27,7 @@ import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSet
 import { AppSideLoginComponent } from './pages/authentication/login/login.component';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './elite-life/home/home.component';
+import { Toast } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { HomeComponent } from './elite-life/home/home.component';
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
     RecaptchaFormsModule,
-    RecaptchaModule,
+    RecaptchaModule,  
+    Toast,
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],

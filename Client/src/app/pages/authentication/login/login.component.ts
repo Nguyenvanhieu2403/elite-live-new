@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, HostListener } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { AuthenticationService } from '../../service/authentication.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +13,13 @@ export class AppSideLoginComponent {
   isSmallScreen: boolean = false;
   hide = true;
   token: string|undefined;
+  userName: any;
+  passWord: any;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient, 
+    private _authenticationService: AuthenticationService,
+    private messageService: MessageService) {
     this.checkScreenSize();
     this.token = undefined;
   }
@@ -39,7 +46,12 @@ export class AppSideLoginComponent {
       return;
     }
 
-    console.debug(`Token [${this.token}] generated`);
+    if(!this.userName) {
+      this.messageService.add({severity:'error', summary:'Error', detail:'Vui lòng nhập mã đăng nhập'});
+      return;
+    }
+
+
   }
 
   get passwordInput() { return this.signin.get('password'); }
